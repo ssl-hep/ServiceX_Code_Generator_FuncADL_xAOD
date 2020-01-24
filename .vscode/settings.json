@@ -16,9 +16,12 @@
     ],
     "pyright.openFilesOnly": false,
     "python.linting.flake8Enabled": true,
-    "python.pythonPath": "C:\\Users\\gordo\\Anaconda3\\envs\\servicex_codegen\\python.exe",
+    "python.pythonPath": "I:\\Anaconda3\\envs\\ServiceX_Code_Generator_FuncADL_xAOD\\python.exe",
     "python.linting.flake8Args": [
         "--ignore=E501"
     ],
-    "restructuredtext.confPath": ""
+    "restructuredtext.confPath": "",
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true
 }
