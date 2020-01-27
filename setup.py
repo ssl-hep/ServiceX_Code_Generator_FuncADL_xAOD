@@ -49,7 +49,7 @@ setup(
         'flask',
         'Flask-WTF',
         'flask-restful',
-        'func-adl-xAOD.backend==1.0.0a20'
+        'func-adl-xAOD.backend==1.0.0a21'
     ],
     extras_require={
         'test': [
