@@ -5,7 +5,7 @@ RUN useradd -ms /bin/bash servicex
 WORKDIR /home/servicex
 RUN mkdir ./servicex
 
-COPY setup.py setup.py
+COPY setup.cfg setup.cfg
 COPY requirements.txt requirements.txt
 COPY README.md README.md
 RUN pip install -r requirements.txt
