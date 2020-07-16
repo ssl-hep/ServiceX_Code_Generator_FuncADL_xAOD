@@ -8,6 +8,7 @@
         "jsonify",
         "localds",
         "microservice",
+        "noqa",
         "pytest",
         "qastle",
         "servicex",
@@ -16,9 +17,9 @@
     ],
     "pyright.openFilesOnly": false,
     "python.linting.flake8Enabled": true,
-    "python.pythonPath": "C:\\Users\\gordo\\Anaconda3\\envs\\servicex_codegen\\python.exe",
+    "python.pythonPath": ".venv\\Scripts\\python.exe",
     "python.linting.flake8Args": [
         "--ignore=E501"
     ],
-    "restructuredtext.confPath": ""
+    "restructuredtext.confPath": "",
 }
