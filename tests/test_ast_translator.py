@@ -25,7 +25,8 @@ def test_translate_good(mocker):
 
     a = AstTranslator(xaod_executor=exe)
     a.translate_text_ast_to_zip(
-        "(call ResultTTree (call Select (call SelectMany (call EventDataset (list 'localds://did_01')))))")
+        "(call ResultTTree (call Select (call SelectMany " +
+        "(call EventDataset (list 'localds://did_01')))))")
 
     exe.apply_ast_transformations.assert_called_once()
     exe.write_cpp_files.assert_called_once()

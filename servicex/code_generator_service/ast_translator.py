@@ -26,6 +26,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import ast
+import logging
 import os
 import zipfile
 from collections import namedtuple
@@ -57,6 +58,9 @@ class AstTranslator:
             xaod_executor       The object that will do the translation
         '''
         self._exe = xaod_executor if xaod_executor is not None else atlas_xaod_executor()
+        handler = logging.NullHandler()
+        self.logger = logging.getLogger(__name__)
+        self.logger.addHandler(handler)
 
     @property
     def executor(self):
@@ -94,8 +98,10 @@ class AstTranslator:
             raise GenerateCodeException("Requested codegen for an empty string.")
 
         body = text_ast_to_python_ast(code).body
-        print("------>", code, body)
+        self.logger.info(f"Generated {code} from {body}")
         if len(body) != 1:
+            self.logger.error(f'Requested codegen for "{code}" yielded no ' +
+                              'code statements (or too many).')
             raise GenerateCodeException(
                 f'Requested codegen for "{code}" yielded no code statements (or too many).')  # noqa: E501
         a = body[0].value

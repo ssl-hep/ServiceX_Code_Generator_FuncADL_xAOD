@@ -25,6 +25,8 @@
 # CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+import logging
+
 from flask import request, Response
 from flask_restful import Resource
 from servicex.code_generator_service.ast_translator import AstTranslator
@@ -37,6 +39,10 @@ class GenerateCode(Resource):
         return cls
 
     def post(self):
+        handler = logging.NullHandler()
+        logger = logging.getLogger(__name__)
+        logger.addHandler(handler)
+
         try:
             code = request.data.decode('utf8')
             zip_data = self.translator.translate_text_ast_to_zip(code)
@@ -47,8 +53,5 @@ class GenerateCode(Resource):
                 status=200, mimetype='application/octet-stream')
             return response
         except BaseException as e:
-            print(str(e))
-            import traceback
-            import sys
-            traceback.print_exc(file=sys.stdout)
+            logger.exception(f"Got exception while generating code: {e}")
             return {'Message': str(e)}, 500
