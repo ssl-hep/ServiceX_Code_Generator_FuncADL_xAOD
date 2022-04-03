@@ -10,4 +10,4 @@ itsdangerous==2.0.1
 # where flask 1.1.2 was released
 jinja2==2.11.3
 # And jinja2 requires a more recent version of markupsafe
-markupsafe=1.1.1
+markupsafe==1.1.1
